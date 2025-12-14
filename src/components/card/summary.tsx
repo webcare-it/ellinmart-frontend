@@ -105,13 +105,13 @@ export const CartSummary = ({
         <div className="flex justify-between">
           <span className="text-muted-foreground">{"Shipping Cost"}:</span>
           <span className="font-medium">
-            {cartSummary?.shipping_cost || " ৳00.00"}
+            {cartSummary?.shipping_cost || "৳00.00"}
           </span>
         </div>
         <div className="flex justify-between">
           <span className="text-muted-foreground">{"Discount"}:</span>
           <span className="text-green-600 font-semibold">
-            {cartSummary?.discount || " ৳00.00"}
+            {cartSummary?.discount || "৳00.00"}
           </span>
         </div>
 
@@ -119,7 +119,7 @@ export const CartSummary = ({
           <span className="text-muted-foreground">
             {"Estimated sales tax"}:
           </span>
-          <span className="font-medium">{cartSummary?.tax || " ৳00.00"}</span>
+          <span className="font-medium">{cartSummary?.tax || "৳00.00"}</span>
         </div>
       </div>
 
@@ -127,7 +127,7 @@ export const CartSummary = ({
 
       <div className="flex justify-between text-lg font-bold">
         <span>{"Total Amount"}</span>
-        <span>{cartSummary?.grand_total || " ৳00.00"}</span>
+        <span>{cartSummary?.grand_total || "৳00.00"}</span>
       </div>
 
       {children}
