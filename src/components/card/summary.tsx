@@ -4,12 +4,13 @@ import { Coupon } from "./coupon";
 import { useGetCartSummaryQuery } from "@/api/queries/useGetCart";
 import { useSelector } from "react-redux";
 import type { RootStateType } from "@/redux/store";
-import { getConfig, getImageUrl, slugify } from "@/helper";
+import { getConfig, slugify } from "@/helper";
 import { Link } from "react-router-dom";
 import { useConfig } from "@/hooks/useConfig";
 import { RemoveCartButton } from "../common/cart-button";
 import { Quantity } from "./quantity";
 import { cn } from "@/lib/utils";
+import { OptimizedImage } from "../common/optimized-image";
 
 interface CartSummaryType {
   sub_total: string;
@@ -53,12 +54,8 @@ export const CartSummary = ({
               className="flex justify-between items-center border-b pb-2">
               <div className="flex gap-1">
                 <div className="flex-shrink-0 w-20 h-16 sm:w-24 sm:h-20 relative rounded-lg border overflow-hidden">
-                  <img
-                    src={
-                      item?.image
-                        ? getImageUrl(item?.image)
-                        : "/placeholder.svg"
-                    }
+                  <OptimizedImage
+                    src={item?.image || ""}
                     alt={item?.name}
                     className="absolute w-full h-full object-cover"
                   />
@@ -105,13 +102,13 @@ export const CartSummary = ({
         <div className="flex justify-between">
           <span className="text-muted-foreground">{"Shipping Cost"}:</span>
           <span className="font-medium">
-            {cartSummary?.shipping_cost || "৳00.00"}
+            {cartSummary?.shipping_cost || " ৳00.00"}
           </span>
         </div>
         <div className="flex justify-between">
           <span className="text-muted-foreground">{"Discount"}:</span>
           <span className="text-green-600 font-semibold">
-            {cartSummary?.discount || "৳00.00"}
+            {cartSummary?.discount || " ৳00.00"}
           </span>
         </div>
 
@@ -119,7 +116,7 @@ export const CartSummary = ({
           <span className="text-muted-foreground">
             {"Estimated sales tax"}:
           </span>
-          <span className="font-medium">{cartSummary?.tax || "৳00.00"}</span>
+          <span className="font-medium">{cartSummary?.tax || " ৳00.00"}</span>
         </div>
       </div>
 
@@ -127,7 +124,7 @@ export const CartSummary = ({
 
       <div className="flex justify-between text-lg font-bold">
         <span>{"Total Amount"}</span>
-        <span>{cartSummary?.grand_total || "৳00.00"}</span>
+        <span>{cartSummary?.grand_total || " ৳00.00"}</span>
       </div>
 
       {children}
